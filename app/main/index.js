@@ -2,21 +2,9 @@
 
 var app = require('app');
 var ipc = require('ipc');
-var crashReporter = require('crash-reporter');
 var BrowserWindow = require('browser-window');
 
-crashReporter.start({
-    productName: 'es6-ng-electron',
-    companyName: 'FooBar',
-    submitUrl: 'http://localhost:3000/',
-    autoSubmit: true
-});
-
 var mainWindow = null;
-
-ipc.on('crash', function (event, arg) {
-    process.crash(arg);
-});
 
 ipc.on('devTools', function (event, arg) {
     mainWindow.openDevTools();
